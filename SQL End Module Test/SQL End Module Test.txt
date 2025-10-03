@@ -1,0 +1,95 @@
+Name :- Mohit Ghodke
+FRN No :- 13J0725/041
+END MODULE TEST 
+
+1. Retrieve the names of all customers from the `Customers` table, sorted in alphabetical order.
+Ans select customer name from customers
+    order by customer name ;
+
+2. Fetch the top 10 most expensive products from the `Products` table.
+Ans  select product price from products
+     order by price desc limit 10;
+
+3. Write a query to get the second-highest salary from the `Employees` table.
+Ans select salary from employee
+    oreder by salary desc
+    limit 1,1;
+
+4. Get the total count of customers from each city in the `Customers` table.
+Ans select city, count(*) 
+from Customers 
+group by city;
+
+5. Retrieve department-wise total salary from the `Employees` table but only include
+departments where the total salary is greater than 2,00,000.
+Ans select department id,sum(salary) 
+    from employees
+    group by department id
+    having sum(salary)>20000;
+6. Extract only the last four characters of the `phone_number` column and first three characters
+from `customerName` columns from the `Customers` table.
+Ans SELECT LEFT(customerName,3), RIGHT(phone_number,4)
+    FROM Customers;
+7. Write a query to retrieve products where the `product_name` contains "Pro".
+ans SELECT * FROM Products
+WHERE product_name LIKE '%Pro%';
+
+8. Fetch the total number of students per course from the `Students` table, only for courses that
+have at least 30 students enrolled.
+Ans SELECT Course, COUNT(*) FROM Students
+GROUP BY Course
+HAVING COUNT(*) >= 30;
+
+9. Write an SQL query to find the number of orders placed in each month of the year.
+Ans SELECT MONTH(OrderDate), COUNT(*) FROM Orders
+    GROUP BY MONTH(OrderDate);
+10. Get the highest and lowest salary per department from the `Employees` table.
+Ans >SELECT Department, MAX(Salary), MIN(Salary) 
+    FROM Employees 
+    GROUP BY Department;
+11. What does the following query return?
+Ans  a)Data 
+
+12. Which clause is used to sort the results in descending order?
+Ans a) ORDER BY DESC
+ 
+13. What is the default sorting order of `ORDER BY` if no direction (ASC/DESC) is specified?
+Ans a) ASC
+
+14. What will be the output of the following query?
+Ans B 15.68
+
+15. Which SQL function is used to count the number of rows in a table?
+Ans b) COUNT()
+
+16. Question:
+You have two tables:
+• Orders with columns: order_id, customer_id, order_date, total_amount.
+• Customers with columns: customer_id, customer_name.
+• O/P- customer_id, customer_name, avg_order_value
+Write an SQL query to find the average order value (total_amount) for each customer. Only
+include customers who have made more than 2 orders.
+Ans SELECT Customers.customer_id, Customers.customer_name, AVG(Orders.total_amount)
+ FROM Customers
+JOIN Orders ON Customers.customer_id = Orders.customer_id
+GROUP BY Customers.customer_id  Customers.customer_name;
+
+17. Question:
+You have two tables:
+• Products with columns: product_id, product_name.
+• Sales with columns: sale_id, product_id, sale_date, amount.
+• O/P- product_id | product_name | sales_count
+Write an SQL query to find the number of sales made for each product. Only include products
+with more than 50 sales.
+Ans SELECT p.product_id, p.product_name, COUNT(s.sale_id) AS sales_count
+FROM Products p
+JOIN Sales s ON p.product_id = s.product_id
+GROUP BY p.product_id, p.product_name
+HAVING COUNT(s.sale_id) > 50;
+
+
+
+
+
+
+
